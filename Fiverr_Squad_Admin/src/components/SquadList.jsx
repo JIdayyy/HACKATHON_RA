@@ -24,6 +24,7 @@ export const SquadList = (props) => (
       <TextField source="id" />
       <TextField source="name" />
       <TextField source="capacity" />
+      <TextField source="img_url" />
       <TextField source="description" />
       <ReferenceField label="User" source="owner_id" reference="User">
         <TextField source="firstname" />
@@ -40,6 +41,7 @@ export const SquadCreate = (props) => (
       <TextInput source="name" />
       <NumberInput source="capacity" />
       <TextInput source="description" />
+      <TextInput source="img_url" />
       <ReferenceInput label="User" source="owner_id" reference="User">
         <SelectInput optionText="email" />
       </ReferenceInput>
@@ -59,6 +61,7 @@ export const SquadEdit = (props) => (
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
       <TextInput source="name" />
+      <TextInput source="img_url" />
       <NumberInput source="capacity" />
       <TextInput source="description" />
       <ReferenceInput label="User" source="owner_id" reference="User">
