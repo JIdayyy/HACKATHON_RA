@@ -6,6 +6,7 @@ import buildHasuraProvider from "ra-data-hasura";
 import userCreate from "../src/components/UserList";
 import pictureCreate from "../src/components/PictureList";
 import projectCreate from "../src/components/ProjectList";
+import squadCreate from "../src/components/SquadList";
 function App() {
   const [dataProvider, setDataProvider] = useState(null);
   const myClientWithAuth = new ApolloClient({
@@ -36,7 +37,7 @@ function App() {
       <Resource name="BusinessSector" list={ListGuesser} />
       <Resource name="Skill" list={ListGuesser} />
       <Resource name="Job" list={ListGuesser} />
-      <Resource name="Squad" list={ListGuesser} />
+      <Resource name="Squad" list={ListGuesser} create={squadCreate} />
       <Resource name="squads" />
       <Resource name="Project" list={ListGuesser} create={projectCreate} />
       <Resource name="businesses" list={ListGuesser} />
