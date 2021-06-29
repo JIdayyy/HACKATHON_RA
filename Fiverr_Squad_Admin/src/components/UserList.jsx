@@ -28,10 +28,10 @@ export const UserList = (props) => (
       <TextField source="password" />
       <ImageField source="avatar_url" />
       <TextField source="phone_number" />
-      <ArrayField source="owned_squads" fieldKey="uuid">
+      <ArrayField source="owned_squads" >
         <Datagrid>
-          <TextField source="name" />
           <TextField source="id" />
+         
         </Datagrid>
       </ArrayField>
       <EditButton />

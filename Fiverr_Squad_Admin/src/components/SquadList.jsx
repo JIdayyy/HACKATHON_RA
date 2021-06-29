@@ -6,7 +6,9 @@ import {
   SelectInput,
   SimpleForm,
   TextField,
+  ArrayInput,
   ReferenceField,
+  SimpleFormIterator,
   TextInput,
   Edit,
   NumberInput,
@@ -69,6 +71,13 @@ export const SquadEdit = (props) => (
       >
         <SelectInput optionText="id" />
       </ReferenceInput>
+      <ArrayInput source="user_squads" >
+      
+        <SimpleFormIterator>
+        
+        <SelectInput source="id" />
+    </SimpleFormIterator>
+      </ArrayInput>
     </SimpleForm>
   </Edit>
 );
