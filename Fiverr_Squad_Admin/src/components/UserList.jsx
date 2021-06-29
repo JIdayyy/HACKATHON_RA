@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 import {
   Create,
@@ -7,17 +7,17 @@ import {
   SelectInput,
   TextInput,
   DateInput,
-} from "react-admin";
+} from 'react-admin';
 
 export const UserList = (props) => (
   <List {...props}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="firstname" />
+      <TextField source="lastname" />
       <EmailField source="email" />
-      <TextField source="password" />
+      <PasswordInput source="password" />
       <ImageField source="picture" />
-      <TextField source="birthDate" />
       <TextField source="reservationId" />
       <TextField source="phoneNumber" />
       <TextField source="role" />
@@ -26,7 +26,7 @@ export const UserList = (props) => (
   </List>
 );
 
-const UserCreate = (props) => (
+export const userCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="firstname" />
@@ -37,4 +37,17 @@ const UserCreate = (props) => (
   </Create>
 );
 
-export default UserCreate;
+export const userEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="firstname" />
+      <TextInput source="email" />
+      <TextInput source="password" />
+      <TextInput source="avatar_url" />
+      <TextInput source="bio" />
+
+      <TextInput source="phone_number" />
+      <TextInput source="role" />
+    </SimpleForm>
+  </Edit>
+);
