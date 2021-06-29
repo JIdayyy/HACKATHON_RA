@@ -4,22 +4,22 @@ import {
   Create,
   ReferenceInput,
   SelectInput,
-  Edit,
   SimpleForm,
   TextInput,
-  DateInput,
 } from "react-admin";
 
-const PictureCreate = (props) => (
+export const JobCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput disabled label="Id" source="id" />
-      <TextInput source="url" />
-      <ReferenceInput label="Project" source="project_id" reference="Project">
-        <SelectInput optionText="id" />
+      <TextInput source="label" />
+      <ReferenceInput
+        label="Sector"
+        source="sector_id"
+        reference="BusinessSector"
+      >
+        <SelectInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>
 );
-
-export default PictureCreate;

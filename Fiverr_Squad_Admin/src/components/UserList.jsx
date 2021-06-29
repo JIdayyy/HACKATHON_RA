@@ -14,14 +14,19 @@ export const UserList = (props) => (
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField source="firstname" />
+      <TextField source="lastname" />
       <EmailField source="email" />
-      <TextField source="password" />
+      <PasswordInput source="password" />
+      <ImageField source="picture" />
+      <TextField source="reservationId" />
+      <TextField source="phoneNumber" />
+      <TextField source="role" />
       <EditButton />
     </Datagrid>
   </List>
 );
 
-const UserCreate = (props) => (
+export const userCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="firstname" />
@@ -32,4 +37,17 @@ const UserCreate = (props) => (
   </Create>
 );
 
-export default UserCreate;
+export const userEdit = (props) => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextInput source="firstname" />
+      <TextInput source="email" />
+      <TextInput source="password" />
+      <TextInput source="avatar_url" />
+      <TextInput source="bio" />
+
+      <TextInput source="phone_number" />
+      <TextInput source="role" />
+    </SimpleForm>
+  </Edit>
+);

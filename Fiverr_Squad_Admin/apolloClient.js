@@ -1,13 +1,13 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const myClientWithAuth = new ApolloClient({
-  uri: "https://fiverr-squad.hasura.app/v1/graphqlv",
+import { API_URL, KEY } from "./config";
+const client = new ApolloClient({
+  uri: API_URL,
   cache: new InMemoryCache(),
   headers: {
-    "x-hasura-admin-secret":
-      "PjfyrUDJWBKdgA3529sHNwxOifZwefIYqN5Bk90zWb52XSYMr6CpkZXpSGYck8gC",
+    "x-hasura-admin-secret": KEY,
     // 'Authorization': `Bearer xxxx`,
   },
 });
 
-export default myClientWithAuth;
+export default client;

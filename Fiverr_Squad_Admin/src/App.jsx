@@ -3,25 +3,19 @@ import { Admin, Resource, ListGuesser, EditGuesser, Create } from "react-admin";
 import "./App.css";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import buildHasuraProvider from "ra-data-hasura";
-import userCreate from "../src/components/UserList";
+import { userCreate, userEdit } from "../src/components/UserList";
+import { JobCreate } from "../src/components/JobList";
 import pictureCreate from "../src/components/PictureList";
 import projectCreate from "../src/components/ProjectList";
+import client from "../apolloClient";
 import squadCreate from "../src/components/SquadList";
 function App() {
   const [dataProvider, setDataProvider] = useState(null);
-  const myClientWithAuth = new ApolloClient({
-    uri: "https://fiverr-squad.hasura.app/v1/graphql",
-    cache: new InMemoryCache(),
-    headers: {
-      "x-hasura-admin-secret":
-        "PjfyrUDJWBKdgA3529sHNwxOifZwefIYqN5Bk90zWb52XSYMr6CpkZXpSGYck8gC",
-    },
-  });
 
   useEffect(() => {
     const buildDataProvider = async () => {
       const dataProvider = await buildHasuraProvider({
-        client: myClientWithAuth,
+        client: client,
       });
       setDataProvider(() => dataProvider);
     };
@@ -32,11 +26,19 @@ function App() {
 
   return (
     <Admin dataProvider={dataProvider}>
-      <Resource name="User" list={ListGuesser} create={userCreate} />
+      <Resource
+        name="User"
+        list={ListGuesser}
+        create={userCreate}
+        edit={userEdit}
+      />
       <Resource name="Picture" list={ListGuesser} create={pictureCreate} />
       <Resource name="BusinessSector" list={ListGuesser} />
       <Resource name="Skill" list={ListGuesser} />
-      <Resource name="Job" list={ListGuesser} />
+      <Resource name="Job" list={ListGuesser} create={JobCreate} />
+      <Resource name="sectors" />
+      <Resource name="projects" />
+
       <Resource name="Squad" list={ListGuesser} create={squadCreate} />
       <Resource name="squads" />
       <Resource name="Project" list={ListGuesser} create={projectCreate} />
