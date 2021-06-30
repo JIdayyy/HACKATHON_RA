@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Admin, Resource, ListGuesser, EditGuesser, Create } from "react-admin";
 import "./App.css";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import buildHasuraProvider from "ra-data-hasura";
-import { userCreate, userEdit } from "../src/components/UserList";
-import { JobCreate } from "../src/components/JobList";
-import pictureCreate from "../src/components/PictureList";
-import projectCreate from "../src/components/ProjectList";
 import client from "../apolloClient";
-import squadCreate from "../src/components/SquadList";
+import { Admin, Resource, ListGuesser, EditGuesser, Create } from "react-admin";
+import { JobCreate ,JobList,JobEdit} from "../src/components/JobList";
+import { UserCreate, UserEdit, UserList } from "../src/components/UserList";
+import {PictureCreate,PictureList,PictureEdit} from "../src/components/PictureList";
+import {ProjectCreate,ProjectList, ProjectEdit} from "../src/components/ProjectList";
+import {SquadCreate,SquadList,SquadEdit} from "../src/components/SquadList";
+import {BusinessList,BusinessEdit,BusinessCreate} from '../src/components/BusinessList'
+import {SkillList,SkillEdit,SkillCreate} from '../src/components/SkillList'
 function App() {
   const [dataProvider, setDataProvider] = useState(null);
 
@@ -28,21 +29,20 @@ function App() {
     <Admin dataProvider={dataProvider}>
       <Resource
         name="User"
-        list={ListGuesser}
-        create={userCreate}
-        edit={userEdit}
+        list={UserList}
+        create={UserCreate}
+        edit={UserEdit}
       />
-      <Resource name="Picture" list={ListGuesser} create={pictureCreate} />
-      <Resource name="BusinessSector" list={ListGuesser} />
-      <Resource name="Skill" list={ListGuesser} />
-      <Resource name="Job" list={ListGuesser} create={JobCreate} />
-      <Resource name="sectors" />
-      <Resource name="projects" />
+      <Resource name="Job" list={JobList} create={JobCreate} edit={JobEdit}/>
+      <Resource name="Picture" list={PictureList} create={PictureCreate} edit={PictureEdit}/>
+      <Resource name="Project" edit={ProjectEdit} list={ProjectList} create={ProjectCreate} />
+      <Resource name="Squad" list={SquadList} create={SquadCreate} edit={SquadEdit} />
+      <Resource name="BusinessSector" list={BusinessList} create={BusinessCreate} edit={BusinessEdit}/>
+      <Resource name="Skill" list={SkillList} edit={SkillEdit} create={SkillCreate} />
 
-      <Resource name="Squad" list={ListGuesser} create={squadCreate} />
-      <Resource name="squads" />
-      <Resource name="Project" list={ListGuesser} create={projectCreate} />
-      <Resource name="businesses" list={ListGuesser} />
+      
+      
+     
     </Admin>
   );
 }
