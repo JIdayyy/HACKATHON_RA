@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { AutocompleteArrayInput } from "react-admin";
 import {
   Create,
   ReferenceInput,
@@ -14,9 +14,8 @@ import {
   NumberInput,
   List,
   EditButton,
-  Datagrid
+  Datagrid,
 } from "react-admin";
-
 
 export const SquadList = (props) => (
   <List {...props}>
@@ -29,7 +28,7 @@ export const SquadList = (props) => (
       <ReferenceField label="User" source="owner_id" reference="User">
         <TextField source="firstname" />
       </ReferenceField>
-      <EditButton/>
+      <EditButton />
     </Datagrid>
   </List>
 );
@@ -45,6 +44,7 @@ export const SquadCreate = (props) => (
       <ReferenceInput label="User" source="owner_id" reference="User">
         <SelectInput optionText="email" />
       </ReferenceInput>
+      <AutocompleteArrayInput source="User" />
       <ReferenceInput
         label="Buisness"
         source="business_id"
@@ -74,15 +74,11 @@ export const SquadEdit = (props) => (
       >
         <SelectInput optionText="id" />
       </ReferenceInput>
-      <ArrayInput source="user_squads" >
-      
+      <ArrayInput source="user_squad">
         <SimpleFormIterator>
-        
-        <SelectInput source="id" />
-    </SimpleFormIterator>
+          <SelectInput optionText="id" />
+        </SimpleFormIterator>
       </ArrayInput>
     </SimpleForm>
   </Edit>
 );
-
-
